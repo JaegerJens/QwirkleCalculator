@@ -1,9 +1,59 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
+    <title>Qwirkle Calculator</title>
+    <link href="dist/bootstrap-3.3.2/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
+    <div class="page-header">
+        <h1>Qwirkle Calculator</h1>
+    </div>
 
+    <div class="panel panel-default">
+        <div class="panel-heading">Player Overview</div>
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Jens <span class="badge">14</span>
+            </li>
+            <li class="list-group-item">
+                Jochen <span class="badge">13</span>
+            </li>
+            <li class="list-group-item">
+                Brigitte <span class="badge">14</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Change points</div>
+        <div class="panel-body">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="operation" id="addRadio" value="add" checked />
+                    <span class="label label-success"><span class="glyphicon glyphicon-plus"></span> Add</span>
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="operation" id="subtractRadio" value="subtract" />
+                    <span class="label label-danger"><span class="glyphicon glyphicon-minus"></span> Subtract</span>
+                </label>
+            </div>
+
+            <div class="btn-group" role="group" aria-label="Round">
+                <button type="button" class="btn btn-default">1</button>
+                <button type="button" class="btn btn-default">2</button>
+                <button type="button" class="btn btn-default">3</button>
+                <button type="button" class="btn btn-default">4</button>
+                <button type="button" class="btn btn-default">5</button>
+                <button type="button" class="btn btn-default">6</button>
+                <button type="button" class="btn btn-default">12</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="dist/jquery-1.11.2/jquery-1.11.2.min.js"></script>
+    <script src="dist/bootstrap-3.3.2/js/bootstrap.min.js"></script>
+    <script src="dist/knockout.js-3.2.0/knockout-3.2.0.js"></script>
 </body>
 </html>
