@@ -57,6 +57,12 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dist\bootstrap-3.3.2\css\bootstrap-theme.css.map" />
+    <Content Include="dist\bootstrap-3.3.2\css\bootstrap.css.map" />
+    <Content Include="dist\bootstrap-3.3.2\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="dist\bootstrap-3.3.2\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="dist\bootstrap-3.3.2\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="dist\bootstrap-3.3.2\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -65,11 +71,23 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dist\bootstrap-3.3.2\css\bootstrap-theme.css" />
+    <Content Include="dist\bootstrap-3.3.2\css\bootstrap-theme.min.css" />
+    <Content Include="dist\bootstrap-3.3.2\css\bootstrap.css" />
+    <Content Include="dist\bootstrap-3.3.2\css\bootstrap.min.css" />
+    <Content Include="dist\bootstrap-3.3.2\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="dist\bootstrap-3.3.2\js\bootstrap.js" />
+    <Content Include="dist\bootstrap-3.3.2\js\bootstrap.min.js" />
+    <Content Include="dist\bootstrap-3.3.2\js\npm.js" />
+    <Content Include="dist\jquery-1.11.2\jquery-1.11.2.min.js" />
+    <Content Include="dist\knockout.js-3.2.0\knockout-3.2.0.js" />
+    <Content Include="index.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
