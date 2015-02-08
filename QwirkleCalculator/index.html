@@ -11,15 +11,9 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">Player Overview</div>
-        <ul class="list-group">
-            <li class="list-group-item active">
-                Jens <span class="badge">14</span>
-            </li>
-            <li class="list-group-item">
-                Jochen <span class="badge">13</span>
-            </li>
-            <li class="list-group-item">
-                Brigitte <span class="badge">14</span>
+        <ul class="list-group" data-bind="foreach: PlayerList">
+            <li class="list-group-item" data-bind="css: activeCssClass">
+                <span data-bind="text: name"></span> <span class="badge" data-bind="text: points"></span>
             </li>
         </ul>
     </div>
@@ -40,14 +34,8 @@
                 </label>
             </div>
 
-            <div class="btn-group" role="group" aria-label="Round">
-                <button type="button" class="btn btn-default">1</button>
-                <button type="button" class="btn btn-default">2</button>
-                <button type="button" class="btn btn-default">3</button>
-                <button type="button" class="btn btn-default">4</button>
-                <button type="button" class="btn btn-default">5</button>
-                <button type="button" class="btn btn-default">6</button>
-                <button type="button" class="btn btn-default">12</button>
+            <div class="btn-group" role="group" aria-label="Round" data-bind="foreach: ButtonList">
+                <button type="button" class="btn btn-default" data-bind="value: value, text: value, click: changePoints"></button>
             </div>
         </div>
     </div>
@@ -55,5 +43,66 @@
     <script src="dist/jquery-1.11.2/jquery-1.11.2.min.js"></script>
     <script src="dist/bootstrap-3.3.2/js/bootstrap.min.js"></script>
     <script src="dist/knockout.js-3.2.0/knockout-3.2.0.js"></script>
+    <script>
+        function Player(name) {
+            this.name = ko.observable(name);
+            this.points = ko.observable(0);
+            this.isActive = ko.observable(false);
+
+            this.activeCssClass = ko.pureComputed(function () {
+                if (this.isActive()) {
+                    return "active";
+                };
+            }, this)
+        }
+
+        function PointButton(value, playerList, action) {
+            this.value = ko.observable(value);
+
+            var allPlayers = playerList;
+            var action = action;
+
+            this.getCurrentPlayer = function () {
+                var activePlayer = undefined;
+                allPlayers().forEach(function (current) {
+                    if (current.isActive()) {
+                        activePlayer = current;
+                    };
+                })
+                return activePlayer;
+            }
+
+            this.changePoints = function (data) {
+                var player = this.getCurrentPlayer();
+                var currentPoints = player.points();
+                if (action() === "add") {
+                    currentPoints = currentPoints + data.value();
+                } else {
+                    currentPoints = currentPoints - data.value();
+                }
+                player.points(currentPoints);
+            }
+        }
+
+        function myViewModel() {
+            // init PlayerList
+            this.PlayerList = ko.observableArray();
+            this.PlayerList().push(new Player("Jens"));
+            this.PlayerList().push(new Player("Jochen"));
+            this.PlayerList().push(new Player("Brigitte"));
+            this.PlayerList()[0].isActive(true);
+
+            this.currentOperation = ko.observable("add");
+
+            // init buttons
+            this.ButtonList = ko.observableArray();
+            for (var val = 1; val <= 6; ++val) {
+                this.ButtonList().push(new PointButton(val, this.PlayerList, this.currentOperation));
+            }
+            this.ButtonList().push(new PointButton(12, this.PlayerList, this.currentOperation));
+        }
+
+        ko.applyBindings(new myViewModel());
+    </script>
 </body>
 </html>
